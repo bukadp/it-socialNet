@@ -1,0 +1,12 @@
+
+.item {
+color: aqua;
+    border-top: dotted 1px black;
+}
+
+.item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
