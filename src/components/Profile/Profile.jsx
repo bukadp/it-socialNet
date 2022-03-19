@@ -1,17 +1,18 @@
 import React from 'react'
 import classes from './Profile.module.css'
-import MyPosts from './Myposts/MyPosts.jsx'
+import MyPosts from './Myposts/MyPosts'
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import {updateNewPostText} from "../../redux/state";
+/*import {addPost} from "../../redux/state";*/
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <div>
-            <div className={classes.Content_cover}>
-                cover
-            </div>
-            <div>
-                ava+desc
-            </div>
-        <MyPosts />
+            <ProfileInfo/>
+            <MyPosts postsData={props.profilePage.postsData}
+                     newPostText={props.profilePage.newPostText}
+                     updateNewPostText={props.updateNewPostText}
+                     addPost={props.addPost}/>
         </div>
     )
 }

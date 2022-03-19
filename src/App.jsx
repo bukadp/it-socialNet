@@ -16,17 +16,23 @@ import {
     Link
 } from "react-router-dom";
 
-function App() {
 
-    return (
+function App(props) {
+        return (
         <BrowserRouter>
             <div className="App-wrapper">
                 <Header/>
                 <Navbar/>
                 <div className="App-wrapper-content">
                     <Routes>
-                        <Route path="/dialogs" element={<Dialogs/>}/>
-                        <Route path="/profile" element={<Profile/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs
+                            localState={props.state.dialogsPage}
+                            updateNewMessageText={props.updateNewMessageText}
+                            createMessage={props.createMessage} />}/>
+                        <Route path="/profile" element={<Profile
+                            profilePage={props.state.profilePage}
+                            updateNewPostText={props.updateNewPostText}
+                            addPost={props.addPost}/>}/>
                         <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/settings" element={<Settings/>}/>

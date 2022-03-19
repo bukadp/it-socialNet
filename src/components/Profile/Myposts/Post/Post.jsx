@@ -7,7 +7,7 @@ const Post = (props) => {
             <img src='http://www.dniprodesign.dp.ua/projects/logo/i/v2/dnipro_logo_31.svg'/>
             {props.message}
             <div>
-                <span>like</span>
+                <span>like: </span>
                 {props.likeCount}
             </div>
         </div>

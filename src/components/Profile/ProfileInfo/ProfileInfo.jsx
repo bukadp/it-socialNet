@@ -1,20 +1,20 @@
 import React from 'react'
-import classes from './Profile.module.css'
-import MyPosts from './Myposts/MyPosts.jsx'
+import classes from './ProfileInfo.module.css'
+import coverImage from "../../../1618769251_51-funart_pro-p-dnepropetrovsk-ukraina-krasivie-mesta-foto-54.jpg"
 
-const Profile = () => {
+
+const ProfileInfo = () => {
     return (
         <div>
-            <ProfileInfo/>
             <div>
-                <img src='https://24tv.ua/resources/photos/news/202009/1412263.jpg?v=1637318367000&w=1200&h=675&fit=cover&q=50'/>
+                <img
+                    src={coverImage}/>
             </div>
-            <div>
+            <div className={classes.description_block}>
                 ava+desc
             </div>
-        <MyPosts />
         </div>
     )
 }
 
-export default Profile;
+export default ProfileInfo;
