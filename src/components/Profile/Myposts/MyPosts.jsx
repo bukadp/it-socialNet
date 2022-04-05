@@ -1,7 +1,9 @@
 import React from 'react'
 import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {addPost, updateNewPostText} from "../../../redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
+
+
 
 const MyPosts = (props) => {
     const postsElements = props.postsData.map((post) =>
@@ -10,7 +12,7 @@ const MyPosts = (props) => {
 
     const newPostElement = React.createRef();
 
-    const addPost = () => {
+    const onAddPost = () => {
         props.addPost();
     };
 
@@ -29,7 +31,7 @@ const MyPosts = (props) => {
                                   value={props.newPostText}/>
                 </div>
                 <div>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={onAddPost}>Add post</button>
                 </div>
                 <div>
                     <button>Remove</button>
