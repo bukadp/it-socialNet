@@ -3,7 +3,9 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS'
 
 const initialState = {
-    users: [{
+    users: []
+}
+/*    users: [{
         id: 1,
         photoUrl: 'https://images2.minutemediacdn.com/image/upload/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/62455-shout-factory1-869b74b647b88045caac956956bd1ff8.jpg',
         followed: false,
@@ -26,9 +28,8 @@ const initialState = {
             fullName: 'Kyrill',
             status: 'I am a student',
             location: {city: 'Kyiv', country: 'Ukraine'}
-        }, ],
+        }, ],*/
 
-}
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -61,7 +62,7 @@ const usersReducer = (state = initialState, action) => {
 
 export const followAC = (userId) => ({type: FOLLOW, userId})
 export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
-export const setUsersAC = (users) => {type:SET_USERS, users}
+export const setUsersAC = (users) => ({type:SET_USERS, users})
 
 
 export default usersReducer;
