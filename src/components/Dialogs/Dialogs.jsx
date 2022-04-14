@@ -28,6 +28,7 @@ const Dialogs = (props) => {
         //const textMessage = createMessageElement.current.value;
         props.onMessageChange(textMessage);
     }
+
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
@@ -49,19 +50,6 @@ const Dialogs = (props) => {
                 </div>
 
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     )
 }
