@@ -6,3 +6,12 @@
 .Header img {
     height: 50%;
 }
+
+.loginBlock {
+    float: right;
+
+}
+
+.loginBlock a{
+    color: white;
+}
