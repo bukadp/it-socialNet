@@ -2,6 +2,8 @@ import React from "react";
 import style from "./Users.module.css";
 import userPhoto from "../../assets/img/user.png";
 import {NavLink} from "react-router-dom";
+import {userAPI} from "../../api/api";
+
 
 function Users(props) {
     const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -9,6 +11,7 @@ function Users(props) {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
+
 
     return (
         <div>
@@ -25,18 +28,18 @@ function Users(props) {
                 props.users.map(u => <div key={u.id}>
                 <span>
                 <div>
-                    <NavLink to={'/profile/'+u.id}>
+                    <NavLink to={'/profile/' + u.id}>
                     <img src={u.photos.small != null ? u.photos.small : userPhoto} className={style.userPhoto}/>
                     </NavLink>
                 </div>
                     <div>
                         {u.followed
-                            ? <button onClick={() => {
-                                props.unfollow(u.id)
-                            }}>Unfollow</button>
-                            : <button onClick={() => {
-                                props.follow(u.id)
-                            }}>Follow</button>}
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                      onClick={() => {props.unfollow(u.id)}}
+                            >Unfollow</button>
+                            : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                      onClick={() => {props.follow(u.id)}}
+                            >Follow</button>}
                     </div>
                 </span>
                     <span>

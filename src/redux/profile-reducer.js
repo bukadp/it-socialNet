@@ -1,3 +1,6 @@
+import axios from "axios";
+import {userAPI} from "../api/api";
+
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -51,6 +54,19 @@ export const updateNewPostTextActionCreator = (text) => ({
     type: UPDATE_NEW_POST_TEXT,
     newText: text,
 })
+
+
+
+export const getUserProfile = (userId) => {
+
+    return (dispatch) => {
+        userAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setUserProfile(response.data));
+            });
+    }
+}
+
 
 
 export default profileReducer;
