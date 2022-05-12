@@ -3,24 +3,23 @@ import classes from './ProfileInfo.module.css'
 import coverImage from "../../../1618769251_51-funart_pro-p-dnepropetrovsk-ukraina-krasivie-mesta-foto-54.jpg"
 import Preloader from "../../common/Preloader";
 import Post from "../Myposts/Post/Post";
+import ProfileStatus from "./ProfileStatus";
 
 
 const ProfileInfo = (props) => {
     if (!props.profile){
         return <Preloader/>
     }
-    /*const profileElements = props.profile.map((profile) =>
-        <Post aboutMe={profile.aboutMe} lookingForAJob={profile.lookingForAJob} fullName={profile.fullName} key={profile.userId.toString()}/>
-    );*/
 
     return (
         <div>
-            <div>
+{/*            <div>
                 <img
                     src={coverImage}/>
-            </div>
+            </div>*/}
             <div className={classes.description_block}>
                 <img src={props.profile.photos.large}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
 <div>
     {props.profile.aboutMe}

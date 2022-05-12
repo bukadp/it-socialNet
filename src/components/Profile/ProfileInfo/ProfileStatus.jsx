@@ -1,24 +1,52 @@
 import React from 'react'
-import classes from './ProfileInfo.module.css'
 
 
-const ProfileStatus = (props) => {
+class ProfileStatus extends React.Component {
+    state = {
+        editMode: false,
+        status: this.props.status,
+    }
 
-    return (
-        <div>
-            {/*            <div>
-                <img
-                    src={coverImage}/>
-            </div>*/}
-            <div className={classes.description_block}>
-                <img src={props.profile.photos.large}/>
-            </div>
-            <ProfileStatus />
+    activateEditMode = () => {
+        this.setState({
+            editMode: true,
+        })
+
+    }
+
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        })
+    }
+
+
+    deActivateEditMode = () => {
+        this.setState({
+            editMode: false,
+        })
+        this.props.updateStatus(this.state.status);
+    }
+
+    render() {
+        return (
             <div>
-                {props.profile.aboutMe}
+                {!this.state.editMode &&
+                    <div>
+                        <span onDoubleClick={this.activateEditMode}>{this.props.status || '----------'}</span>
+                    </div>
+                }
+                {this.state.editMode &&
+                    <div>
+                        <input onChange={this.onStatusChange}
+                               autoFocus={true} onBlur={this.deActivateEditMode}
+                               value={this.state.status}/>
+                    </div>
+                }
             </div>
-        </div>
-    )
+
+        )
+    }
 }
 
 export default ProfileStatus;

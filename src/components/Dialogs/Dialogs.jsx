@@ -3,6 +3,7 @@ import classes from './Dialogs.module.css'
 import DialogItem from "./DilogItems/DialogItem";
 import Message from "./Message/Message";
 import store, {createMessageActionCreator, onMessageChangeActionCreator} from "../../redux/dialogs-reducer";
+import {Navigate} from "react-router-dom";
 
 
 const Dialogs = (props) => {
@@ -28,6 +29,7 @@ const Dialogs = (props) => {
         //const textMessage = createMessageElement.current.value;
         props.onMessageChange(textMessage);
     }
+
 
     return (
         <div className={classes.dialogs}>

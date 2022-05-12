@@ -1,9 +1,10 @@
 import axios from "axios";
-import {userAPI} from "../api/api";
+import {profileAPI, userAPI} from "../api/api";
 
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 const initialState = {
     postsData: [
@@ -13,6 +14,7 @@ const initialState = {
     ],
     newPostText: "Новый ТЕКСТ ТУТ",
     profile: null,
+    status: "",
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -40,7 +42,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile,
             };
-
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status,
+            };
         default:
             return state;
     }
@@ -48,14 +54,38 @@ const profileReducer = (state = initialState, action) => {
 
 export const setUserProfile = (profile) => ({
     type: SET_USER_PROFILE,
-    profile,})
+    profile,
+})
 export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (text) => ({
     type: UPDATE_NEW_POST_TEXT,
     newText: text,
 })
+export const setStatus = (status) => ({
+    type: SET_STATUS,
+    status
+})
+
+export const getStatus = (userId) => {
+    return (dispatch) => {
+        profileAPI.getStatus(userId)
+            .then(response => {
+                dispatch(setStatus(response.data));
+            });
+    }
+}
 
 
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setStatus(status));
+                }
+            });
+    }
+}
 
 export const getUserProfile = (userId) => {
 
@@ -66,7 +96,6 @@ export const getUserProfile = (userId) => {
             });
     }
 }
-
 
 
 export default profileReducer;
