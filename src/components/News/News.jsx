@@ -35,9 +35,10 @@ const savedValues = {
 }
 
 const onSubmit = (values, onSubmitProps) => {
-    console.log('Form data', values)
+    console.log('Form data', onSubmitProps.values)
     console.log('submit props', onSubmitProps)
     onSubmitProps.setSubmitting(false)
+    onSubmitProps.resetForm()
 }
 
 const validationSchema = Yup.object({
@@ -186,6 +187,7 @@ function NewsForm(props) {
                         })}>Visit field</button>*/}
 
                         <button type='button' onClick={() => setFormValues(savedValues)}>Load save data</button>
+                        <button type='reset'>Reset</button>
                         <button type="submit" disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
                     </Form>
                 )
