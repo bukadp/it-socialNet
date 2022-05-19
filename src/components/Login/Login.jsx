@@ -1,8 +1,8 @@
 import React from "react";
-
-/*import c from './News.module.css'
+import c from './Ligin.module.css'
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from 'yup'
+
 
 const initialValues = {
     name: '',
@@ -20,7 +20,7 @@ const validationSchema = Yup.object({
     channel: Yup.string().required('Required'),
 })
 
-function NewsForm(props) {
+function LoginForm(props) {
 
     return (
         <Formik
@@ -38,15 +38,7 @@ function NewsForm(props) {
                     <ErrorMessage name='name'/>
                 </div>
                 <div className={c.form_control}>
-                    <label htmlFor='email'>E-mail</label>
-                    <Field type='email'
-                           id='email'
-                           name='email'
-                    />
-                    <ErrorMessage name='email'/>
-                </div>
-                <div className={c.form_control}>
-                    <label htmlFor='channel'>Channel</label>
+                    <label htmlFor='channel'>Password</label>
                     <Field type='text'
                            id='channel'
                            name='channel'
@@ -60,16 +52,16 @@ function NewsForm(props) {
 }
 
 
-function News(props) {
+function Login(props) {
     return (
         <div>
-            <h1>News</h1>
-            <NewsForm/>
+            <h1>Login</h1>
+            <LoginForm/>
         </div>
     )
 }
 
-export default News*/
+export default Login
 
 
 
@@ -86,6 +78,7 @@ export default News*/
 
 
 
+/*
 
 
 function LoginForm(props) {
@@ -121,3 +114,4 @@ function Login(props) {
 }
 
 export default Login
+*/
